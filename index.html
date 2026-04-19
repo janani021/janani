@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Janani Veluru — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --blue-dim: #DBEAFE;
+  --blue-muted: #93C5FD;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-faint: #94A3B8;
+  --bg: #ffffff;
+  --bg-alt: #F8FAFC;
+  --border: #E2E8F0;
+  --border-hover: #CBD5E1;
+  --radius: 12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1000px;margin:0 auto;padding:0 2rem;height:60px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--blue)}
+.nav-links{display:flex;gap:0.25rem}
+.nav-links a{font-size:13px;color:var(--text-muted);padding:6px 12px;border-radius:6px;transition:color 0.15s,background 0.15s}
+.nav-links a:hover{color:var(--text);background:var(--bg-alt)}
+.page{max-width:1000px;margin:0 auto;padding:0 2rem}
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:60px}
+.hero-inner{padding:5rem 0 4rem}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);background:var(--blue-dim);padding:5px 14px;border-radius:99px;margin-bottom:1.5rem;border:1px solid var(--blue-muted)}
+.hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+h1.hero-name{font-size:clamp(38px,6vw,64px);font-weight:600;letter-spacing:-0.03em;line-height:1.05;margin-bottom:0.75rem}
+.hero-title{font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;letter-spacing:-0.01em}
+.hero-desc{font-size:16px;color:var(--text-muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:3rem}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;background:var(--blue);color:#fff;padding:10px 22px;border-radius:8px;transition:background 0.15s,transform 0.15s}
+.btn-primary:hover{background:#1D4ED8;transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--blue);padding:10px 22px;border-radius:8px;border:1.5px solid var(--blue);transition:background 0.15s,transform 0.15s}
+.btn-outline:hover{background:var(--blue-dim);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text-muted);padding:10px 20px;border-radius:8px;border:1px solid var(--border);transition:border-color 0.15s,color 0.15s,transform 0.15s}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-primary svg,.btn-outline svg,.btn-ghost svg{width:15px;height:15px;flex-shrink:0}
+.hero-scroll{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-faint);font-family:'JetBrains Mono',monospace}
+.hero-scroll-line{width:40px;height:1px;background:var(--border)}
+.section{padding:5rem 0;border-top:1px solid var(--border)}
+.section-label{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2.5rem}
+.section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+.section-heading{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.02em;margin-bottom:1rem}
+.section-sub{font-size:15px;color:var(--text-muted);max-width:520px;margin-bottom:3rem;line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:1rem}
+.about-highlights{display:flex;flex-direction:column;gap:1rem}
+.highlight-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;transition:border-color 0.2s}
+.highlight-card:hover{border-color:var(--blue-muted)}
+.highlight-icon{width:36px;height:36px;border-radius:8px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem}
+.highlight-icon svg{width:16px;height:16px;color:var(--blue)}
+.highlight-title{font-size:14px;font-weight:600;margin-bottom:0.25rem}
+.highlight-desc{font-size:13px;color:var(--text-muted);line-height:1.6}
+.exp-timeline{position:relative;padding-left:2rem}
+.exp-timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:0;width:1px;background:var(--border)}
+.exp-item{position:relative;margin-bottom:3rem}
+.exp-item:last-child{margin-bottom:0}
+.exp-dot{position:absolute;left:-2rem;top:6px;width:15px;height:15px;border-radius:50%;background:var(--blue-dim);border:2px solid var(--blue)}
+.exp-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;transition:border-color 0.2s,transform 0.2s}
+.exp-card:hover{border-color:var(--blue-muted);transform:translateX(4px)}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.25rem}
+.exp-role{font-size:16px;font-weight:600}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);background:var(--blue-dim);padding:3px 10px;border-radius:99px;white-space:nowrap;flex-shrink:0;border:1px solid var(--blue-muted)}
+.exp-company{font-size:13px;color:var(--blue);font-weight:500;margin-bottom:0.25rem}
+.exp-location{font-size:12px;color:var(--text-faint);margin-bottom:1.25rem;font-family:'JetBrains Mono',monospace}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-bullets li{font-size:13px;color:var(--text-muted);line-height:1.7;padding-left:1.25rem;position:relative}
+.exp-bullets li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1.5px;background:var(--blue)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.skill-cell{background:var(--bg);padding:1.5rem}
+.skill-cell-title{font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--blue);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;padding:3px 10px;border-radius:6px;background:var(--blue-dim);color:#1E40AF;border:1px solid var(--blue-muted);font-family:'JetBrains Mono',monospace}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:20px}
+.proj-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden}
+.proj-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-muted))}
+.proj-card:hover{border-color:var(--blue-muted);transform:translateY(-3px)}
+.proj-badge{display:inline-block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--blue);background:var(--blue-dim);padding:3px 10px;border-radius:99px;border:1px solid var(--blue-muted);margin-bottom:0.75rem}
+.proj-title{font-size:17px;font-weight:600;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.proj-desc{font-size:13px;color:var(--text-muted);line-height:1.75;margin-bottom:1rem}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem}
+.proj-bullets li{font-size:13px;color:var(--text-muted);line-height:1.65;padding-left:1.25rem;position:relative}
+.proj-bullets li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1.5px;background:var(--blue-light)}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.25rem}
+.proj-tech{font-size:11px;padding:3px 10px;border-radius:6px;background:var(--bg);border:1px solid var(--border-hover);color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+.proj-links{display:flex;gap:0.75rem}
+.proj-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:500;color:var(--blue);transition:color 0.15s}
+.proj-link:hover{color:#1D4ED8}
+.proj-link svg{width:13px;height:13px}
+.edu-grid{display:flex;flex-direction:column;gap:1.25rem}
+.edu-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;transition:border-color 0.2s}
+.edu-card:hover{border-color:var(--blue-muted)}
+.edu-degree{font-size:15px;font-weight:600;margin-bottom:0.2rem}
+.edu-school{font-size:13px;color:var(--blue);font-weight:500;margin-bottom:0.6rem}
+.edu-courses{font-size:12px;color:var(--text-faint);line-height:1.7}
+.edu-meta{text-align:right}
+.edu-period{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-faint);display:block;margin-bottom:0.4rem}
+.edu-gpa{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue);font-weight:500}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.contact-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s,transform 0.2s;cursor:pointer;display:block}
+.contact-card:hover{border-color:var(--blue-muted);transform:translateY(-2px)}
+.contact-icon{width:40px;height:40px;border-radius:10px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.contact-icon svg{width:18px;height:18px;color:var(--blue)}
+.contact-label{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem}
+.contact-value{font-size:14px;font-weight:500;color:var(--blue)}
+footer{border-top:1px solid var(--border);padding:2rem 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-name{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-faint)}
+.footer-copy{font-size:12px;color:var(--text-faint)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{animation:fadeUp 0.4s ease both}
+h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
+.hero-title{animation:fadeUp 0.5s ease 0.1s both}
+.hero-desc{animation:fadeUp 0.5s ease 0.15s both}
+.hero-ctas{animation:fadeUp 0.5s ease 0.2s both}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .edu-card{grid-template-columns:1fr}
+  .edu-meta{text-align:left}
+  .footer-inner{flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">JV</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="page">
+    <div class="hero-inner">
+      <div class="hero-badge">Data Engineer · 3 years experience</div>
+      <h1 class="hero-name">Hi, I'm Janani Veluru</h1>
+      <div class="hero-title">I build data pipelines &amp; cloud-native solutions</div>
+      <p class="hero-desc">Data Engineer skilled in Python, SQL, Spark, and AWS — designing ETL/ELT pipelines and scalable analytics infrastructure that turns raw data into reliable, production-grade insight.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="https://linkedin.com/in/jananiv21" target="_blank" rel="noopener" class="btn-outline">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/janani021" target="_blank" rel="noopener" class="btn-ghost">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="page">
+    <div class="section-label">About Me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Data Engineer with 3 years of experience building production-grade data pipelines, cloud architectures, and analytics workflows. I currently pursue my Master's in Computer Science at Arizona State University (4.0 GPA).</p>
+        <p>At Cognizant, I architected cloud-based solutions for large-scale connected vehicle data — improving pipeline efficiency by 40% and achieving 85% test coverage. I thrive at the intersection of data reliability, scalability, and automation.</p>
+        <p>I enjoy designing systems that are not just functional but resilient and maintainable — from raw ingestion all the way to polished dashboards.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="highlight-title">Pipeline Engineering</div>
+          <div class="highlight-desc">Designing ETL/ELT workflows with PySpark, Airflow, and dbt for batch and real-time analytics.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="highlight-title">Cloud & DevOps</div>
+          <div class="highlight-desc">AWS-native solutions with Lambda, S3, Glue, Athena — provisioned with Terraform and automated CI/CD.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="highlight-title">Data Modeling</div>
+          <div class="highlight-desc">Star schema models, Medallion Architecture pipelines, and Snowflake-based data warehouses.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="page">
+    <div class="section-label">Work Experience</div>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Data Engineer</div>
+            <span class="exp-period">Jun 2021 – Oct 2023</span>
+          </div>
+          <div class="exp-company">Cognizant Technology Solutions</div>
+          <div class="exp-location">Chennai, India</div>
+          <ul class="exp-bullets">
+            <li>Spearheaded development of ETL pipelines using PySpark and SQL to manage large-scale connected vehicle data, improving processing efficiency by 40% and supporting real-time and batch analytics.</li>
+            <li>Architected cloud-based data solutions using AWS Lambda, S3, EC2, Glue, Athena, and DynamoDB to support scalable data operations and improve data availability.</li>
+            <li>Orchestrated workflows using SQS and Step Functions, enabling daily execution of data pipelines and reducing operational interruptions.</li>
+            <li>Streamlined infrastructure provisioning with Terraform and enhanced CI/CD using CodePipeline across 6+ pipelines, significantly minimizing deployment overhead.</li>
+            <li>Implemented automated testing with PyTest achieving 85% code coverage validated through SonarQube, reducing production defects.</li>
+            <li>Collaborated with clients in an Agile workflow to validate data, document data flows, and optimize transformation logic.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Data Engineer Intern</div>
+            <span class="exp-period">Jan 2021 – May 2021</span>
+          </div>
+          <div class="exp-company">Cognizant Technology Solutions</div>
+          <div class="exp-location">Chennai, India</div>
+          <ul class="exp-bullets">
+            <li>Developed a credit card monitoring system ingesting 2M+ records into HDFS to enable scalable risk and fraud analysis.</li>
+            <li>Created Hive tables and SQL queries to analyze spending data across multiple categories, identifying unusual transaction patterns.</li>
+            <li>Implemented PySpark transformation pipelines cutting reporting time from hours to minutes.</li>
+            <li>Visualized key KPIs and trends using Pandas and Matplotlib, enabling quicker identification of risk indicators.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="page">
+    <div class="section-label">Skills & Technologies</div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="skill-cell-title">Languages</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span><span class="tag">HTML/CSS</span></div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-title">Databases</div>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Snowflake</span><span class="tag">DynamoDB</span><span class="tag">MS SQL Server</span></div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-title">Big Data & Pipelines</div>
+        <div class="tags"><span class="tag">PySpark</span><span class="tag">Hadoop</span><span class="tag">Airflow</span><span class="tag">dbt</span><span class="tag">ETL/ELT</span><span class="tag">Hive</span></div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-title">Cloud & DevOps</div>
+        <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Glue</span><span class="tag">Athena</span><span class="tag">EC2</span><span class="tag">Terraform</span><span class="tag">Docker</span></div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-title">Analytics & BI</div>
+        <div class="tags"><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-title">Tools & CI/CD</div>
+        <div class="tags"><span class="tag">Git</span><span class="tag">Bitbucket</span><span class="tag">PyTest</span><span class="tag">SonarQube</span><span class="tag">Jira</span><span class="tag">CodePipeline</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="page">
+    <div class="section-label">Featured Projects</div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-badge">AWS · Snowflake</span>
+        <div class="proj-title">YouTube Analytics Pipeline</div>
+        <p class="proj-desc">End-to-end analytics pipeline for YouTube data — from API ingestion to interactive dashboards.</p>
+        <ul class="proj-bullets">
+          <li>AWS Lambda + EventBridge for daily ingestion from the YouTube Data API; raw and curated data stored in S3.</li>
+          <li>S3-triggered Lambda transforms raw metrics (views, likes, engagement rate) into structured CSV files.</li>
+          <li>SQS triggers Snowpipe for continuous near-real-time loading into Snowflake.</li>
+          <li>Tableau dashboards surface video performance and engagement trends.</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="proj-tech">AWS Lambda</span><span class="proj-tech">S3</span><span class="proj-tech">EventBridge</span><span class="proj-tech">SQS</span><span class="proj-tech">Snowflake</span><span class="proj-tech">Snowpipe</span><span class="proj-tech">Tableau</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/janani021/youtube-analytics-pipeline" target="_blank" rel="noopener" class="proj-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-badge">dbt · Airflow</span>
+        <div class="proj-title">E-Commerce Data Pipeline</div>
+        <p class="proj-desc">Scalable ELT pipeline following Medallion Architecture for reliable downstream analytics.</p>
+        <ul class="proj-bullets">
+          <li>Raw e-commerce data ingested into PostgreSQL following Bronze → Silver → Gold Medallion Architecture.</li>
+          <li>dbt models transform data into star schema fact and dimension tables for BI reporting.</li>
+          <li>Apache Airflow automates daily ELT workflows, executing dbt transformations on schedule.</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="proj-tech">PostgreSQL</span><span class="proj-tech">dbt</span><span class="proj-tech">Apache Airflow</span><span class="proj-tech">Medallion Architecture</span><span class="proj-tech">Star Schema</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/janani021/ecommerce-pipeline" target="_blank" rel="noopener" class="proj-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="section">
+  <div class="page">
+    <div class="section-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">Master of Science in Computer Science</div>
+          <div class="edu-school">Arizona State University · Tempe, USA</div>
+          <div class="edu-courses">Data Mining · Data Visualization · Data Processing at Scale</div>
+        </div>
+        <div class="edu-meta">
+          <span class="edu-period">Jan 2024 – Dec 2025</span>
+          <span class="edu-gpa">GPA: 4.0 / 4.0</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">B.Tech in Electronics &amp; Computer Engineering</div>
+          <div class="edu-school">Vellore Institute of Technology · India</div>
+          <div class="edu-courses">Data Structures · DBMS · Machine Learning · Cloud Computing</div>
+        </div>
+        <div class="edu-meta">
+          <span class="edu-period">Jul 2017 – Aug 2021</span>
+          <span class="edu-gpa">GPA: 8.53 / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="page">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-heading">Let's connect</h2>
+    <p class="section-sub">I'm always open to discussing new opportunities, collaborations, or just connecting with fellow data engineers.</p>
+    <div class="contact-grid">
+      <a href="mailto:vjanani021@gmail.com" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">vjanani021@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/jananiv21" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">linkedin.com/in/jananiv21</div>
+      </a>
+      <a href="https://github.com/janani021" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">github.com/janani021</div>
+      </a>
+      <a href="tel:6232101846" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">623-210-1846</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="page">
+    <div class="footer-inner">
+      <span class="footer-name">Janani Veluru · Data Engineer</span>
+      <span class="footer-copy">© 2025 Janani Veluru. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

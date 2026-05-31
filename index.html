@@ -33,8 +33,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links a{font-size:13px;color:var(--text-muted);padding:6px 12px;border-radius:6px;transition:color 0.15s,background 0.15s}
 .nav-links a:hover{color:var(--text);background:var(--bg-alt)}
 .page{max-width:1000px;margin:0 auto;padding:0 2rem}
-#hero{min-height:100vh;display:flex;align-items:center;padding-top:60px}
-.hero-inner{padding:5rem 0 4rem}
+#hero{
+    display:flex;
+    align-items:center;
+    padding-top:60px;
+    padding-bottom:10px;
+}
+
+.hero-inner{
+    padding:2rem 0;
+}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);background:var(--blue-dim);padding:5px 14px;border-radius:99px;margin-bottom:1.5rem;border:1px solid var(--blue-muted)}
 .hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
 h1.hero-name{font-size:clamp(38px,6vw,64px);font-weight:600;letter-spacing:-0.03em;line-height:1.05;margin-bottom:0.75rem}
@@ -50,7 +58,7 @@ h1.hero-name{font-size:clamp(38px,6vw,64px);font-weight:600;letter-spacing:-0.03
 .btn-primary svg,.btn-outline svg,.btn-ghost svg{width:15px;height:15px;flex-shrink:0}
 .hero-scroll{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-faint);font-family:'JetBrains Mono',monospace}
 .hero-scroll-line{width:40px;height:1px;background:var(--border)}
-.section{padding:5rem 0;border-top:1px solid var(--border)}
+.section{padding:2rem 0;border-top:1px solid var(--border)}
 .section-label{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2.5rem}
 .section-label::after{content:"";flex:1;height:1px;background:var(--border)}
 .section-heading{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.02em;margin-bottom:1rem}
@@ -79,7 +87,15 @@ h1.hero-name{font-size:clamp(38px,6vw,64px);font-weight:600;letter-spacing:-0.03
 .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
 .exp-bullets li{font-size:13px;color:var(--text-muted);line-height:1.7;padding-left:1.25rem;position:relative}
 .exp-bullets li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:1.5px;background:var(--blue)}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
 .skill-cell{background:var(--bg);padding:1.5rem}
 .skill-cell-title{font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--blue);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
@@ -186,7 +202,7 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
     <div class="section-label">About Me</div>
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm a Data Engineer with 3 years of experience building production-grade data pipelines, cloud architectures, and analytics workflows. I currently pursue my Master's in Computer Science at Arizona State University (4.0 GPA).</p>
+        <p>I'm a Data Engineer with 3 years of experience building data pipelines, cloud architectures, and analytics workflows. I hold a Master of Science in Computer Science at Arizona State University.</p>
         <p>At Cognizant, I architected cloud-based solutions for large-scale connected vehicle data — improving pipeline efficiency by 40% and achieving 85% test coverage. I thrive at the intersection of data reliability, scalability, and automation.</p>
         <p>I enjoy designing systems that are not just functional but resilient and maintainable — from raw ingestion all the way to polished dashboards.</p>
       </div>
@@ -233,8 +249,8 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
           <ul class="exp-bullets">
             <li>Spearheaded development of ETL pipelines using PySpark and SQL to manage large-scale connected vehicle data, improving processing efficiency by 40% and supporting real-time and batch analytics.</li>
             <li>Architected cloud-based data solutions using AWS Lambda, S3, EC2, Glue, Athena, and DynamoDB to support scalable data operations and improve data availability.</li>
-            <li>Orchestrated workflows using SQS and Step Functions, enabling daily execution of data pipelines and reducing operational interruptions.</li>
-            <li>Streamlined infrastructure provisioning with Terraform and enhanced CI/CD using CodePipeline across 6+ pipelines, significantly minimizing deployment overhead.</li>
+            <li>Automated pipeline orchestration using AWS Step Functions, SQS, and GitHub Actions across 7+ data pipelines, improving reliability and reducing manual effort.</li>
+            <li>Containerized applications with Docker and managed infrastructure using Terraform, enabling consistent deployments and scalable cloud environments.</li>
             <li>Implemented automated testing with PyTest achieving 85% code coverage validated through SonarQube, reducing production defects.</li>
             <li>Collaborated with clients in an Agile workflow to validate data, document data flows, and optimize transformation logic.</li>
           </ul>
@@ -252,8 +268,7 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
           <ul class="exp-bullets">
             <li>Developed a credit card monitoring system ingesting 2M+ records into HDFS to enable scalable risk and fraud analysis.</li>
             <li>Created Hive tables and SQL queries to analyze spending data across multiple categories, identifying unusual transaction patterns.</li>
-            <li>Implemented PySpark transformation pipelines cutting reporting time from hours to minutes.</li>
-            <li>Visualized key KPIs and trends using Pandas and Matplotlib, enabling quicker identification of risk indicators.</li>
+            <li>Performed data quality validation by identifying nulls, duplicates, and mismatched records, while analyzing key KPIs and trends to support fraud detection and risk analysis.</li>
           </ul>
         </div>
       </div>
@@ -264,31 +279,82 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
 <section id="skills" class="section">
   <div class="page">
     <div class="section-label">Skills & Technologies</div>
+
     <div class="skills-grid">
+
       <div class="skill-cell">
         <div class="skill-cell-title">Languages</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span><span class="tag">HTML/CSS</span></div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Java</span>
+          <span class="tag">R</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+        </div>
       </div>
+
       <div class="skill-cell">
-        <div class="skill-cell-title">Databases</div>
-        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Snowflake</span><span class="tag">DynamoDB</span><span class="tag">MS SQL Server</span></div>
+        <div class="skill-cell-title">Databases & Data Warehousing</div>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Snowflake</span>
+          <span class="tag">DynamoDB</span>
+        </div>
       </div>
+
       <div class="skill-cell">
         <div class="skill-cell-title">Big Data & Pipelines</div>
-        <div class="tags"><span class="tag">PySpark</span><span class="tag">Hadoop</span><span class="tag">Airflow</span><span class="tag">dbt</span><span class="tag">ETL/ELT</span><span class="tag">Hive</span></div>
+        <div class="tags">
+          <span class="tag">PySpark</span>
+          <span class="tag">Databricks</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">dbt</span>
+          <span class="tag">Hadoop</span>
+          <span class="tag">Hive</span>
+          <span class="tag">ETL/ELT</span>
+        </div>
       </div>
+
       <div class="skill-cell">
         <div class="skill-cell-title">Cloud & DevOps</div>
-        <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Glue</span><span class="tag">Athena</span><span class="tag">EC2</span><span class="tag">Terraform</span><span class="tag">Docker</span></div>
+        <div class="tags">
+          <span class="tag">AWS</span>
+          <span class="tag">GCP</span>
+          <span class="tag">AWS Lambda</span>
+          <span class="tag">S3</span>
+          <span class="tag">Glue</span>
+          <span class="tag">Athena</span>
+          <span class="tag">EC2</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
+        </div>
       </div>
+
       <div class="skill-cell">
         <div class="skill-cell-title">Analytics & BI</div>
-        <div class="tags"><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+        </div>
       </div>
+
       <div class="skill-cell">
         <div class="skill-cell-title">Tools & CI/CD</div>
-        <div class="tags"><span class="tag">Git</span><span class="tag">Bitbucket</span><span class="tag">PyTest</span><span class="tag">SonarQube</span><span class="tag">Jira</span><span class="tag">CodePipeline</span></div>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Bitbucket</span>
+          <span class="tag">Postman</span>
+          <span class="tag">PyTest</span>
+          <span class="tag">SonarQube</span>
+          <span class="tag">Jira</span>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -362,7 +428,7 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
           <div class="edu-courses">Data Structures · DBMS · Machine Learning · Cloud Computing</div>
         </div>
         <div class="edu-meta">
-          <span class="edu-period">Jul 2017 – Aug 2021</span>
+          <span class="edu-period">Jul 2017 – Jun 2021</span>
           <span class="edu-gpa">GPA: 8.53 / 10</span>
         </div>
       </div>

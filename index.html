@@ -42,7 +42,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links{display:flex;gap:0.25rem}
 .nav-links a{font-size:13px;color:var(--text-muted);padding:6px 12px;border-radius:6px;transition:color 0.15s,background 0.15s}
 .nav-links a:hover{color:var(--text);background:var(--bg-alt)}
-.page{max-width:1000px;margin:0 auto;padding:0 2rem}
+.page{max-width:1000px;margin:0 auto;padding:0 1rem}
 #hero{
     display:flex;
     align-items:center;
@@ -80,14 +80,14 @@ color:#CBD5E1;
 }
 
 .hero-inner{
-    padding:2rem 0;
+    padding:1.5rem 0;
 }
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);background:var(--blue-dim);padding:5px 14px;border-radius:99px;margin-bottom:1.5rem;border:1px solid var(--blue-muted)}
 .hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
 h1.hero-name{font-size:clamp(38px,6vw,64px);font-weight:600;letter-spacing:-0.03em;line-height:1.05;margin-bottom:0.75rem}
 .hero-title{font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;letter-spacing:-0.01em}
 .hero-desc{font-size:16px;color:var(--text-muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:3rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.5rem}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;background:linear-gradient(
 
 135deg,
@@ -107,11 +107,11 @@ box-shadow:0 10px 20px rgba(37,99,235,0.2);color:#fff;padding:10px 22px;border-r
 .btn-primary svg,.btn-outline svg,.btn-ghost svg{width:15px;height:15px;flex-shrink:0}
 .hero-scroll{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-faint);font-family:'JetBrains Mono',monospace}
 .hero-scroll-line{width:40px;height:1px;background:var(--border)}
-.section{padding:2rem 0;border-top:1px solid var(--border)}
-.section-label{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2.5rem}
+.section{padding:1.5rem 0;border-top:1px solid var(--border)}
+.section-label{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
 .section-label::after{content:"";flex:1;height:1px;background:var(--border)}
 .section-heading{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.02em;margin-bottom:1rem}
-.section-sub{font-size:15px;color:var(--text-muted);max-width:520px;margin-bottom:3rem;line-height:1.7}
+.section-sub{font-size:15px;color:var(--text-muted);max-width:520px;margin-bottom:1rem;line-height:1.7}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .about-text p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:1rem}
 .about-highlights{display:flex;flex-direction:column;gap:1rem}
@@ -266,10 +266,6 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
           GitHub
         </a>
       </div>
-      <div class="hero-scroll">
-        <div class="hero-scroll-line"></div>
-        Scroll to explore
-      </div>
     </div>
   </div>
 </section>
@@ -322,7 +318,6 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
             <span class="exp-period">Jun 2021 – Oct 2023</span>
           </div>
           <div class="exp-company">Cognizant Technology Solutions</div>
-          <div class="exp-location">Chennai, India</div>
           <ul class="exp-bullets">
             <li>Spearheaded development of ETL pipelines using PySpark and SQL to manage large-scale connected vehicle data, improving processing efficiency by 40% and supporting real-time and batch analytics.</li>
             <li>Architected cloud-based data solutions using AWS Lambda, S3, EC2, Glue, Athena, and DynamoDB to support scalable data operations and improve data availability.</li>
@@ -341,11 +336,10 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
             <span class="exp-period">Jan 2021 – May 2021</span>
           </div>
           <div class="exp-company">Cognizant Technology Solutions</div>
-          <div class="exp-location">Chennai, India</div>
           <ul class="exp-bullets">
             <li>Developed a credit card monitoring system ingesting 2M+ records into HDFS to enable scalable risk and fraud analysis.</li>
             <li>Created Hive tables and SQL queries to analyze spending data across multiple categories, identifying unusual transaction patterns.</li>
-            <li>Performed data quality validation by identifying nulls, duplicates, and mismatched records, while analyzing key KPIs and trends to support fraud detection and risk analysis.</li>
+            <li>Performed data quality checks, analyzed transaction trends for fraud detection, and created dashboards to track spending patterns and key metrics.</li>
           </ul>
         </div>
       </div>
@@ -441,7 +435,6 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
     <div class="section-label">Featured Projects</div>
     <div class="proj-grid">
       <div class="proj-card">
-        <span class="proj-badge">Databricks · Healthcare</span>
         <div class="proj-title">Healthcare Analytics Platform</div>
         <p class="proj-desc">
           End-to-end healthcare analytics platform built on Databricks Medallion Architecture,
@@ -468,14 +461,12 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
         </div>
       </div>
       <div class="proj-card">
-        <span class="proj-badge">AWS · Snowflake</span>
         <div class="proj-title">YouTube Analytics Pipeline</div>
         <p class="proj-desc">End-to-end analytics pipeline for YouTube data — from API ingestion to interactive dashboards.</p>
         <ul class="proj-bullets">
           <li>AWS Lambda + EventBridge for daily ingestion from the YouTube Data API; raw and curated data stored in S3.</li>
           <li>S3-triggered Lambda transforms raw metrics (views, likes, engagement rate) into structured CSV files.</li>
-          <li>SQS triggers Snowpipe for continuous near-real-time loading into Snowflake.</li>
-          <li>Tableau dashboards surface video performance and engagement trends.</li>
+          <li>SQS triggers Snowpipe for near real-time loading into Snowflake, Tableau dashboards for video performance and engagement analysis.</li>
         </ul>
         <div class="proj-stack">
           <span class="proj-tech">AWS Lambda</span><span class="proj-tech">S3</span><span class="proj-tech">EventBridge</span><span class="proj-tech">SQS</span><span class="proj-tech">Snowflake</span><span class="proj-tech">Snowpipe</span><span class="proj-tech">Tableau</span>
@@ -488,7 +479,6 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
         </div>
       </div>
       <div class="proj-card">
-        <span class="proj-badge">dbt · Airflow</span>
         <div class="proj-title">E-Commerce Data Pipeline</div>
         <p class="proj-desc">Scalable ELT pipeline following Medallion Architecture for reliable downstream analytics.</p>
         <ul class="proj-bullets">
@@ -544,7 +534,6 @@ h1.hero-name{animation:fadeUp 0.5s ease 0.05s both}
   <div class="page">
     <div class="section-label">Get In Touch</div>
     <h2 class="section-heading">Let's connect</h2>
-    <p class="section-sub">I'm always open to discussing new opportunities, collaborations, or just connecting with fellow data engineers.</p>
     <div class="contact-grid">
       <a href="mailto:vjanani021@gmail.com" class="contact-card">
         <div class="contact-icon">
